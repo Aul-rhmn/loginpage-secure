@@ -41,7 +41,7 @@ const Register = () => {
       <div className="card shadow-sm w-100" style={{ maxWidth: '400px' }}>
         <div className="card-body p-4">
           <div className="text-center mb-4">
-            <h2 className="card-title">Register</h2>
+            <h2 className="card-title text-white">Register</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
