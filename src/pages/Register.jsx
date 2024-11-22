@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -40,64 +37,72 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md p-8">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Register</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Input
+    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+      <div className="card shadow-sm w-100" style={{ maxWidth: '400px' }}>
+        <div className="card-body p-4">
+          <div className="text-center mb-4">
+            <h2 className="card-title">Register</h2>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <input
                 name="name"
+                className="form-control"
                 placeholder="Full Name"
                 value={formData.name}
                 onChange={handleChange}
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Input
+            <div className="mb-3">
+              <input
                 name="email"
                 type="email"
+                className="form-control"
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Input
+            <div className="mb-3">
+              <input
                 name="password"
                 type="password"
+                className="form-control"
                 placeholder="Password"
                 value={formData.password}
                 onChange={handleChange}
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Input
+            <div className="mb-3">
+              <input
                 name="confirmPassword"
                 type="password"
+                className="form-control"
                 placeholder="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
               />
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <button
+              type="submit"
+              className="btn btn-primary w-100"
+              disabled={loading}
+            >
               {loading ? 'Registering...' : 'Register'}
-            </Button>
+            </button>
           </form>
-          <div className="mt-4 text-center text-sm">
-            <span className="text-gray-600">Already have an account? </span>
-            <Link to="/login" className="text-blue-600 hover:underline">
+          <div className="text-center mt-3">
+            <span className="text-muted">Already have an account? </span>
+            <Link to="/login" className="text-primary text-decoration-none">
               Login
             </Link>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

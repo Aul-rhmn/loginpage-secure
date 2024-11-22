@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
-import { Button } from '@/components/ui/button';
 import {
   LayoutDashboard,
   Users,
@@ -22,63 +21,65 @@ const DashboardLayout = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-vh-100 bg-light">
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform ${
-          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0 transition-transform duration-300 ease-in-out`}
+        className={`position-fixed h-100 start-0 top-0 bg-white shadow ${
+          sidebarOpen ? 'translate-middle-x-0' : 'translate-middle-x-100'
+        } d-lg-block`}
+        style={{ width: '250px', zIndex: 1000, transition: 'transform 0.3s ease-in-out' }}
       >
-        <div className="flex flex-col h-full">
-          <div className="flex items-center justify-center h-16 px-4 border-b">
-            <h1 className="text-xl font-bold">Admin Dashboard</h1>
+        <div className="d-flex flex-column h-100">
+          <div className="d-flex align-items-center justify-content-center p-3 border-bottom">
+            <h1 className="h4 mb-0">Admin Dashboard</h1>
           </div>
-          <nav className="flex-1 px-4 py-4 space-y-1">
+          <nav className="flex-grow-1 p-3">
             {navigation.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.name}
                   to={item.to}
-                  className={`flex items-center px-4 py-2 text-sm rounded-lg ${
+                  className={`d-flex align-items-center text-decoration-none p-2 rounded mb-2 ${
                     location.pathname === item.to
-                      ? 'bg-gray-100 text-gray-900'
-                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+                      ? 'bg-light text-dark'
+                      : 'text-secondary'
                   }`}
                 >
-                  <Icon className="w-5 h-5 mr-3" />
+                  <Icon className="me-2" size={20} />
                   {item.name}
                 </Link>
               );
             })}
           </nav>
-          <div className="p-4 border-t">
-            <Button
-              variant="ghost"
-              className="w-full flex items-center justify-center"
+          <div className="p-3 border-top">
+            <button
+              className="btn btn-link text-decoration-none w-100 text-start"
               onClick={logout}
             >
-              <LogOut className="w-5 h-5 mr-2" />
+              <LogOut className="me-2" size={20} />
               Logout
-            </Button>
+            </button>
           </div>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="lg:pl-64">
-        <div className="sticky top-0 z-40 flex items-center h-16 bg-white shadow-sm px-4">
-          <button
-            className="lg:hidden p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-          >
-            <MenuIcon className="w-6 h-6" />
-          </button>
-          <div className="ml-auto flex items-center">
-            <span className="text-sm text-gray-600">Welcome, {user?.name}</span>
+      <div className="ms-lg-5" style={{ marginLeft: '250px' }}>
+        <div className="sticky-top bg-white shadow-sm">
+          <div className="d-flex align-items-center p-3">
+            <button
+              className="btn btn-link d-lg-none"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              <MenuIcon size={24} />
+            </button>
+            <div className="ms-auto">
+              <span className="text-muted">Welcome, {user?.name}</span>
+            </div>
           </div>
         </div>
-        <main className="p-6">
+        <main className="p-4">
           <Outlet />
         </main>
       </div>

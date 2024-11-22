@@ -24,43 +24,49 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <Card className="w-full max-w-md p-8">
-        <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Login</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <Input
+    <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
+      <div className="card shadow-sm w-100" style={{ maxWidth: '400px' }}>
+        <div className="card-body p-4">
+          <div className="text-center mb-4">
+            <h2 className="card-title">Login</h2>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <input
                 type="email"
+                className="form-control"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
-            <div className="space-y-2">
-              <Input
+            <div className="mb-3">
+              <input
                 type="password"
+                className="form-control"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            <Button type="submit" className="w-full" disabled={loading}>
+            <button 
+              type="submit" 
+              className="btn btn-primary w-100"
+              disabled={loading}
+            >
               {loading ? 'Logging in...' : 'Login'}
-            </Button>
+            </button>
           </form>
-          <div className="mt-4 text-center text-sm">
-            <span className="text-gray-600">Don't have an account? </span>
-            <Link to="/register" className="text-blue-600 hover:underline">
+          <div className="text-center mt-3">
+            <span className="text-muted">Don't have an account? </span>
+            <Link to="/register" className="text-primary text-decoration-none">
               Register
             </Link>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };
