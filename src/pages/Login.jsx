@@ -28,10 +28,11 @@ const Login = () => {
       <div className="card shadow-sm w-100" style={{ maxWidth: '400px' }}>
         <div className="card-body p-4">
           <div className="text-center mb-4">
-            <h2 className="card-title">Login</h2>
+            <h2 className="card-title text-white">Login</h2>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
+              <label className="text-white mb-2">Email</label>
               <input
                 type="email"
                 className="form-control"
@@ -42,6 +43,7 @@ const Login = () => {
               />
             </div>
             <div className="mb-3">
+              <label className="text-white mb-2">Password</label>
               <input
                 type="password"
                 className="form-control"
