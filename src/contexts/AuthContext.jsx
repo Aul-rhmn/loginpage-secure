@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { jwtDecode } from 'jwt-decode';
+import { api } from '@/lib/api';
 
 const AuthContext = createContext({});
 
@@ -33,16 +34,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:3001/api/auth/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-      
-      const data = await response.json();
-      
-      if (!response.ok) throw new Error(data.message);
-      
+      const data = await api.post('/auth/login', { email, password });
       localStorage.setItem('token', data.token);
       setUser(jwtDecode(data.token));
       navigate('/dashboard');
@@ -55,16 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (userData) => {
     try {
-      const response = await fetch('http://localhost:3001/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData),
-      });
-      
-      const data = await response.json();
-      
-      if (!response.ok) throw new Error(data.message);
-      
+      await api.post('/auth/register', userData);
       toast.success('Registration successful! Please login.');
       navigate('/login');
     } catch (error) {

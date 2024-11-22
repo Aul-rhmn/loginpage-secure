@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3001/api';
+const API_URL = import.meta.env.VITE_API_URL || 'https://api.lovableproject.com';
 
 const getHeaders = () => {
   const token = localStorage.getItem('token');
@@ -13,7 +13,10 @@ export const api = {
     const response = await fetch(`${API_URL}${endpoint}`, {
       headers: getHeaders(),
     });
-    if (!response.ok) throw new Error('API request failed');
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'API request failed');
+    }
     return response.json();
   },
 
@@ -23,7 +26,10 @@ export const api = {
       headers: getHeaders(),
       body: JSON.stringify(data),
     });
-    if (!response.ok) throw new Error('API request failed');
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'API request failed');
+    }
     return response.json();
   },
 
@@ -33,7 +39,10 @@ export const api = {
       headers: getHeaders(),
       body: JSON.stringify(data),
     });
-    if (!response.ok) throw new Error('API request failed');
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'API request failed');
+    }
     return response.json();
   },
 
@@ -42,7 +51,10 @@ export const api = {
       method: 'DELETE',
       headers: getHeaders(),
     });
-    if (!response.ok) throw new Error('API request failed');
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'API request failed');
+    }
     return response.json();
   },
 };
