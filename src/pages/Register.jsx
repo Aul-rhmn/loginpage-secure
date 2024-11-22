@@ -52,6 +52,7 @@ const Register = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
+                style={{ '::placeholder': { color: '#ffffff' } }}
               />
             </div>
             <div className="mb-3">
@@ -63,6 +64,7 @@ const Register = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
+                style={{ '::placeholder': { color: '#ffffff' } }}
               />
             </div>
             <div className="mb-3">
@@ -74,6 +76,7 @@ const Register = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
+                style={{ '::placeholder': { color: '#ffffff' } }}
               />
             </div>
             <div className="mb-3">
@@ -85,6 +88,7 @@ const Register = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
+                style={{ '::placeholder': { color: '#ffffff' } }}
               />
             </div>
             <button
