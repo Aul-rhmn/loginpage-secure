@@ -80,6 +80,7 @@ const DashboardLayout = () => {
           </div>
         </div>
         <main className="p-4">
+          <h2 className="text-center mb-4">Welcome You're In</h2>
           <Outlet />
         </main>
       </div>
