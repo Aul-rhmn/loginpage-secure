@@ -1,14 +1,56 @@
-import { HomeIcon } from "lucide-react";
-import Index from "./pages/Index.jsx";
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '@/contexts/AuthContext';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import DashboardLayout from './components/DashboardLayout';
 
-/**
- * Central place for defining the navigation items. Used for navigation components and routing.
- */
+const PrivateRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  return user ? children : <Navigate to="/login" />;
+};
+
+const PublicRoute = ({ children }) => {
+  const { user, loading } = useAuth();
+  
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  
+  return !user ? children : <Navigate to="/dashboard" />;
+};
+
 export const navItems = [
   {
-    title: "Home",
     to: "/",
-    icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
+    element: <Navigate to="/dashboard" replace />,
+  },
+  {
+    to: "/login",
+    element: (
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    ),
+  },
+  {
+    to: "/register",
+    element: (
+      <PublicRoute>
+        <Register />
+      </PublicRoute>
+    ),
+  },
+  {
+    to: "/dashboard/*",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
   },
 ];
