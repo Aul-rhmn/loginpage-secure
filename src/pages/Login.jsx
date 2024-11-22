@@ -39,7 +39,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                style={{ '::placeholder': { color: '#242936' } }}
+                style={{ '::placeholder': { color: '#9ba1ae' } }}
               />
             </div>
             <div className="mb-3">
@@ -50,7 +50,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                style={{ '::placeholder': { color: '#242936' } }}
+                style={{ '::placeholder': { color: '#9ba1ae' } }}
               />
             </div>
             <button 

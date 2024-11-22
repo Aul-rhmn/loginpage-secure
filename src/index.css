@@ -40,7 +40,7 @@ body {
 }
 
 .form-control::placeholder {
-  color: #ffffff !important;
+  color: #9ba1ae !important;
 }
 
 .form-control:focus {
