@@ -25,4 +25,61 @@
 
 body {
   background-color: #1a1f2c;
+  color: #e4e6eb;
+}
+
+.card {
+  background-color: #242936;
+  border-color: #2f3544;
+}
+
+.form-control {
+  background-color: #2f3544;
+  border-color: #3a4152;
+  color: #e4e6eb;
+}
+
+.form-control:focus {
+  background-color: #2f3544;
+  border-color: #4a5166;
+  color: #e4e6eb;
+  box-shadow: 0 0 0 0.2rem rgba(62, 84, 163, 0.25);
+}
+
+.btn-primary {
+  background-color: #3e54a3;
+  border-color: #3e54a3;
+}
+
+.btn-primary:hover {
+  background-color: #324282;
+  border-color: #324282;
+}
+
+.text-muted {
+  color: #9ba1ae !important;
+}
+
+.bg-light {
+  background-color: #1a1f2c !important;
+}
+
+.bg-white {
+  background-color: #242936 !important;
+}
+
+.border-bottom {
+  border-bottom-color: #2f3544 !important;
+}
+
+.border-top {
+  border-top-color: #2f3544 !important;
+}
+
+.text-dark {
+  color: #e4e6eb !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.15) !important;
 }
